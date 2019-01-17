@@ -1,0 +1,104 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/MealDetail.css" rel="stylesheet" type="text/css" />
+}
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Models
+@model MealDetailViewModel
+
+@if (TempData["RecipeSuccess"] != null)
+{
+    string successMessage = TempData["RecipeSuccess"] as string;
+
+    <div class="alert alert-success alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@successMessage</strong>
+    </div>
+}
+<body>
+    <!-- START Site Preloader -->
+    <div id="theme-preloader-container">
+        <div class="theme-preloader">
+            <span class="circle-01"></span>
+            <span class="circle-02"></span>
+            <span class="circle-03"></span>
+        </div>
+    </div>
+    <!-- END Site Preloader -->
+    <div class="container text-center">
+        <div class="row-recipe" id="register">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    @if (Model.Recipes.Count == 0)
+                    {
+                        <h4>No Recipes Found!</h4>
+                        <p><a href="/Meal/AddMeal/@Model.Meal.Id?name=@Model.Meal.Name&desc=@Model.Meal.Description&category=@Model.Meal.CategoryId&creator=@Model.Meal.CreatorId" style="color: blue;">Click here</a> to start adding recipes.</p>
+                    }
+                    else
+                    {
+                        <h1 class="title">@Model.Meal.Name</h1>
+                        <h4 class="title">Category: @Model._categories[Model.Meal.CategoryId]</h4>
+                        <hr/>
+                        <div class="articles">
+                            <div class="articles-items clearfix text-center">
+                                @foreach (Recipe recipe in Model.Recipes)
+                                {
+                                    <article class="articles-item">
+                                        <div class="articles-item-img">
+                                            <a href="/Recipe/GetRecipe?recipeid=@recipe.Id">
+                                                @{var imgSrc = String.Format("data:image/gif;base64,{0}", recipe.FoodImageBase64);}
+                                                @if (recipe.FoodImageBase64 != "")
+                                                {
+                                                    <img src="@imgSrc" />
+                                                }
+                                                else
+                                                {
+                                                    <img src="~/Content/MealPlanner/plate-utensils.jpg">
+                                                }
+                                            </a>
+                                        </div>
+                                        <div class="articles-item-description">
+                                            <h3 class="title">
+                                                <a href="/Recipe/GetRecipe?recipeid=@recipe.Id">@recipe.Name</a>
+                                            </h3>
+                                            <div class="articles-item-text">
+                                                <p>
+                                                    @recipe.Description
+                                                </p>
+                                            </div>
+                                            <div class="articles-item-footer clearfix">
+                                                <div class="articles-item-date">Prep: @recipe.PrepTime min</div>
+                                                <div class="articles-item-stats">
+                                                    <span class="articles-item-views">
+                                                        Cook: @recipe.CookTime min
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                }
+                            </div>
+                        </div>
+                        <div>
+                            <div style="display: inline-block">
+                                <input value="EDIT" type="button" class="btn btn-default mealButton" onclick="location.href='@Url.Action("ModifyMeal", "Meal", new { mealId = Model.Meal.Id})'" />
+                            </div>
+                            <div style="display: inline-block">
+                                @using (Html.BeginForm("DeleteMeal", "Meal", FormMethod.Post, new { id = "mealDelete" }))
+                                {
+                                    @Html.TextBox("id", "" + Model.Meal.Id + "", new { type = "hidden" })
+                                    <button type="submit" class="btn btn-default mealButton">DELETE</button>
+                                }
+                            </div>
+                            <div style="display: inline-block">
+                                <input value="DONE" type="button" class="btn btn-default mealButton" onclick="location.href='@Url.Action("GetMeals", "Meal")'" />
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Scripts/theme.js"></script>
+</body>

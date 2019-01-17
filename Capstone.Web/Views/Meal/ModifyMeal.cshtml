@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/RecipeList.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/views/modifymeal.js"></script>
+}
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Models
+@model MealDetailViewModel
+
+    <div class="container">
+        <div class="row-meal col-12">
+            <div id="register"class="col-6"></div>
+            <div class="" id="meals" style="text-align: center">
+                <p>Update "@(Model.Meal.Name)" Here:</p>
+                @using (Html.BeginForm("ModifyMeal", "Meal", FormMethod.Post, new { id = "mealModify" }))
+                {
+                    @Html.TextBox("id", "" + Model.Meal.Id + "", new { type = "hidden" })
+                    <button type="button" id="add_meal" class="btn btn-default add">Add Another</button>
+                    <div id="newbox">
+
+                    </div>
+                    foreach (Recipe recipe in Model.Recipes)
+                    {
+                        <div id="recipes">
+                            <select name="recipeIds">
+                                <option value="0">(remove)</option>
+
+                                @foreach (Recipe recipe2 in Model.AllRecipes)
+                                {
+                                    if (recipe.Name == recipe2.Name)
+                                    {
+                                        <option value="@recipe2.Id" selected="selected">@recipe2.Name</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@recipe2.Id">@recipe2.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    }
+
+                    <div>
+                        <button>Update Meal</button>
+                    </div>
+                }
+            </div>
+            <div id="register" class="col-6"></div>
+        </div>
+    </div>

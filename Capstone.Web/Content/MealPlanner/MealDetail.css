@@ -1,0 +1,87 @@
+﻿body {
+    background-image: url(/Content/GettyImages-731851839-5b0476d704d1cf003aabbad6.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.title {
+    text-align: center;
+}
+
+.modify {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+.delete {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+.done {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+.add {
+    margin-top: 0px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+.ing_list {
+    display: inline-block;
+}
+
+.row-recipe {
+    background-color: white;
+    text-align: center;
+    /*width: 50%;*/
+    min-width: 300px;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px grey;
+    padding-top: 1.5%;
+    padding-left: 1%;
+}
+
+.days {
+    vertical-align: top;
+    padding: 5px;
+}
+
+.table {
+    vertical-align: middle;
+}
+
+.recipeDetails {
+    width: 80%;
+    min-width: 80%;
+    background-color: rgba(169,169,169,0.5);
+    opacity: 0.9;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.mealButton {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}

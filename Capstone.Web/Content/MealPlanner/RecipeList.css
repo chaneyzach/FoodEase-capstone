@@ -1,0 +1,110 @@
+﻿body {
+    background-image: url(/Content/GettyImages-731851839-5b0476d704d1cf003aabbad6.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+.recipeDetails {
+    width: 80%;
+    min-width: 80%;
+    background-color: rgba(169,169,169,0.5);
+    opacity: 0.9;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.row-recipe {
+    background-color: white;
+    text-align: center;
+    /*width: 50%;*/
+    min-width: 300px;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px grey;
+    padding-top: 1.5%;
+    padding-left: 1%;
+}
+
+.name {
+    font-size: 20px;
+    color: #FFCC00;
+}
+
+a{
+    color: black;
+    text-decoration: none;
+}
+
+a:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.recipeList {
+    text-align: center;
+}
+
+.wrapper {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#meals {
+    vertical-align: top;
+}
+
+.meal_name {
+    display: inline-block;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.meal_desc {
+    display: inline-block;
+}
+
+.row-meal {
+    background-color: white;
+    text-align: left;
+    /*width: 50%;*/
+    min-width: 300px;
+    width: 80%;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px grey;
+    padding-top: 1.5%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+.link:hover {
+    color: orangered;
+}
+
+#recipes {
+    margin: 10px;
+}
+
+.recipe-container {
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1em;
+}
+
+.ingr:nth-child(odd) {
+    background-color: #f2f2f2
+}

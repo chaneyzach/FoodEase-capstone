@@ -1,0 +1,92 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/RecipeList.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/MealPlanner/custom.css" rel="stylesheet" type="text/css" />
+}
+
+@if (TempData["RecipeFail"] != null)
+{
+    string successMessage = TempData["RecipeFail"] as string;
+
+    <div class="alert alert-danger alert-dismissable in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@successMessage</strong>
+    </div>
+}
+
+@using Capstone.Web.Models
+@model List<Recipe>
+
+<body>
+    <!-- START Site Preloader -->
+    <div id="theme-preloader-container">
+        <div class="theme-preloader">
+            <span class="circle-01"></span>
+            <span class="circle-02"></span>
+            <span class="circle-03"></span>
+        </div>
+    </div>
+    <!-- END Site Preloader -->
+    <div class="recipe-container text-center">
+        <div class="row-recipe">
+            <h1 class="text-center">Recipes<hr /></h1>
+            <div class="col-sm-12">
+                <div class="articles">
+                    <div class="articles-items clearfix text-center">
+                        <article class="articles-item" style="vertical-align: top">
+                            <a class="plus" href="/Recipe/AddRecipe">
+                                <div class="articles-item-img" style="background-color: lightgray" )>
+                                    <img style="background-color: coral" src="~/Content/MealPlanner/plus3.png" />
+                                </div>
+                                <div class="articles-item-description" style="background-color: coral; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px">
+                                    <h3 class="title" style="font-weight:bolder; font-size:large; color: white">
+                                        ADD NEW RECIPE
+                                    </h3>
+                                </div>
+                            </a>
+                        </article>
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            <article class="articles-item">
+                                <div class="articles-item-img">
+                                    <a href="/Recipe/GetRecipe?recipeid=@Model[i].Id">
+                                        @{var imgSrc = String.Format("data:image/gif;base64,{0}", Model[i].FoodImageBase64);}
+                                        @if (Model[i].FoodImageBase64 != "")
+                                        {
+                                            <img src="@imgSrc" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/MealPlanner/plate-utensils.jpg">
+                                        }
+                                    </a>
+                                </div>
+                                <div class="articles-item-description">
+                                    <h3 class="title" style="">
+                                        <a href="/Recipe/GetRecipe?recipeid=@Model[i].Id">@Model[i].Name</a>
+                                    </h3>
+                                    <div class="articles-item-text">
+                                        <p>
+                                            @Model[i].Description
+                                        </p>
+                                    </div>
+                                    <div class="articles-item-footer clearfix">
+                                        <div class="articles-item-date">Prep: @Model[i].PrepTime min</div>
+                                        <div class="articles-item-stats">
+                                            <span class="articles-item-views">
+                                                Cook: @Model[i].CookTime min
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Scripts/theme.js"></script>
+</body>

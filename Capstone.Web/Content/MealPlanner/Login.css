@@ -1,0 +1,45 @@
+﻿body {
+    /*background-image: url(/Content/MealPlanner/ZNG71.jpg);*/
+    background-image: url(/Content/GettyImages-731851839-5b0476d704d1cf003aabbad6.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.row {
+    background-color: white;
+    text-align: left;
+    width: 20%;
+    min-width: 300px;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px black;
+}
+
+.form-group {
+    font-family: Candara;
+    font-size: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+
+.login {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px black;
+}
+
+.loginTop {
+    text-align: center;
+    color: black;
+    margin-top: 20px;
+}
+
+.error {
+    font-weight: bold;
+    color: red;
+}

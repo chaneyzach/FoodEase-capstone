@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/Pantry.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/views/pantry.js"></script>
+}
+@using Capstone.Web.Models
+@model List<Ingredient>
+
+@*@if (TempData["StatusMessage"] != null)
+{
+    string successMessage = TempData["StatusMessage"] as string;
+
+    <div class="alert alert-success alert-dismissable text-center in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@successMessage</strong>
+    </div>
+}*@
+
+    <body>
+        <!-- START Site Preloader -->
+        @*<div id="theme-preloader-container">
+            <div class="theme-preloader">
+                <span class="circle-01"></span>
+                <span class="circle-02"></span>
+                <span class="circle-03"></span>
+            </div>
+        </div>*@
+        <!-- END Site Preloader -->
+        <div class="container">
+            <div class="row row-pantry">
+                <div id="register">
+                    <div class="col-12">
+                        <p>Add Ingredients Here:</p>
+                        @using (Html.BeginForm("AddNewIngredient", "Pantry", FormMethod.Post, new { id = "ingredientForm" }))
+                        {
+                            <div class="form-group addIngr">
+                                @*@Html.Label("Ingredient")*@
+                                @Html.TextBox("ingredients", "", new { @class = "form-control", placeholder = "Ingredient" })
+                                @Html.ValidationMessage("Ingredient", new { @class = "error" })
+                            </div>
+                            <button type="submit" class="btn btn-default">+</button>
+                        }
+                    </div>
+                    @*<div class="col-sm-4"></div>*@
+                </div>
+
+                <div class="col-12" id="ingredients">
+                    @if (Model.Count != 0)
+                    {
+                        int i = 0;
+
+                        while (i < Model.Count)
+                        {
+                            <ul class="col-3 ingr">
+                                @do
+                                {
+                                    <li class="ingrName">@Model[i].Name</li>
+                                    i++;
+
+                                    if (i == Model.Count)
+                                    {
+                                        break;
+                                    }
+                                } while (i % 15 != 0);
+                            </ul>
+                        }
+                    }
+                    else
+                    {
+                        <p>Your pantry is empty :(</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div>
+                <a href="~/Meal/GetMeals">View Meals</a>
+            </div>
+            <div>
+                <a href="~/MealPlan/GetMealPlans">View Meal Plans</a>
+            </div>
+        </div>
+
+        <!-- Theme Base, Components and Settings -->
+        <script src="~/Scripts/theme.js"></script>
+    </body>

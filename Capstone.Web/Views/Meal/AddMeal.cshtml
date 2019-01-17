@@ -1,0 +1,56 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/RecipeList.css" rel="stylesheet" type="text/css" />
+}
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Models
+@model AddMealViewModel
+
+<div class="container">
+    <div class="row-meal">
+        <div class="row col-8" id="meals" style="display: inline-block">
+            <h1>Meal: @Model.Meal.Name</h1>
+            <div class="" id="recipes">
+                <p>Recipes:</p>
+                @if (Model.MealRecipes != null)
+                {
+                    <ul class="">
+                        @foreach (Recipe recipe in Model.MealRecipes)
+                        {
+                            <li class="">@recipe.Name</li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p>Add Recipes To Your Meal!</p>
+                }
+            </div>
+        </div>
+
+        <div class="col-sm-4" style="display: inline-block">
+            @using (Html.BeginForm("AddMeal", "Meal", FormMethod.Post, new { id = "recipeMealForm" }))
+            {
+                @Html.TextBox("mealId", "" + Model.Meal.Id + "", new { type = "hidden" })
+                <div style="padding-bottom: 5px; margin-top: 25px">
+                    <select name="recipeId">
+                        @foreach (var recipe in Model.Recipes)
+                        {
+                            <option value="@recipe.Id">@recipe.Name</option>
+                        }
+                    </select>
+                </div>
+                <div>
+                    <button style="display: inline-block; float: left; margin-right: 5px" type="submit" id="add_meal" class="btn btn-default">Add</button>
+
+                </div>
+            }
+            @using (Html.BeginForm("GetMeal", "Meal", FormMethod.Get, new { id = "doneButton" }))
+            {
+                <div style="display: inline-block">
+                    <button name="mealId" value="@Model.Meal.Id" type="submit" id="done_meal" class="btn btn-default">Done</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

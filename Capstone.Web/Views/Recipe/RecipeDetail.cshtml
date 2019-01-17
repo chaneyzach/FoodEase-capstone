@@ -1,0 +1,93 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <link href="~/Content/MealPlanner/AddRecipe.css" rel="stylesheet" type="text/css" />
+}
+
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Models
+@model RecipeDetailViewModel
+
+@if (TempData["RecipeSuccess"] != null)
+{
+    string successMessage = TempData["RecipeSuccess"] as string;
+
+    <div class="alert alert-success alert-dismissable fade in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@successMessage</strong>
+    </div>
+}
+<body>
+    <!-- START Site Preloader -->
+    <div id="theme-preloader-container">
+        <div class="theme-preloader">
+            <span class="circle-01"></span>
+            <span class="circle-02"></span>
+            <span class="circle-03"></span>
+        </div>
+    </div>
+    <!-- END Site Preloader -->
+    <div class="container text-center">
+        <div class="row-recipe" id="register">
+            <div class="col-sm-12">
+                <div class="text-center">
+                    <h2 style="text-align:center; padding-top:10px">@Model.Recipe.Name<hr/></h2>
+                    @*<img src="~/Content/MealPlanner/@(Model.Recipe.Id).jpg" style="max-height: 300px"/>*@
+                </div>
+                <div class="row">
+
+                    <div class="text-center col-sm-6 order-lg-2 order-md-2 order-sm-2" style="margin-top:10px; margin-bottom:10px; ">
+                        @{var imgSrc = String.Format("data:image/gif;base64,{0}", Model.Recipe.FoodImageBase64);}
+                        @if (Model.Recipe.FoodImageBase64 != "")
+                        {
+                            <img style="max-height:300px" src="@imgSrc" />
+                        }
+                        else
+                        {
+                            <p class="d-none d-sm-block">No Image Available</p>
+                        }
+                    </div>
+
+                    <div class="ingredients col-sm-6 order-lg-1 order-md-1 order-sm-1 text-sm-left" style="margin-top:5px; ">
+                        <h3>Ingredients</h3>
+                        <div class="ingredientList">
+                            <ul>
+                                @for (int i = (Model.Ingredients.Count - 1); i >= 0; i--)
+                                {
+                                    <li class="ingredient-item">
+                                        <span class="ingredient-value">@Model.Quantities[i]</span>
+                                        <span class="ingredient">@Model.Ingredients[i].Name</span>
+
+                                        </li>
+                                }
+                                    </ul>
+                            <hr /></div>
+                        <div>
+                            <h3>Description</h3>
+                            <div>
+                                <p>
+                                    @Model.Recipe.Description
+                                </p>
+                                <hr /></div>
+                            <h3>Instructions</h3>
+                            <div>
+                                <p>
+                                    @Model.Recipe.Instructions
+                                </p>
+                                <hr /></div>
+                        </div>
+                    </div>
+
+                </div>
+                        <div style="margin-top: 10px; text-align:center">
+                            <input type="button" class="btn btn-default add" value="EDIT" onclick="location.href='@Url.Action("ModifyRecipe", "Recipe", new { recipeId = Model.Recipe.Id})'" />
+                            <input type="button" class="btn btn-default add" value="DELETE" onclick="location.href='@Url.Action("DeleteRecipe", "Recipe", new { recipeId = Model.Recipe.Id})'" />
+                        </div>
+
+                    </div>
+        </div>
+    </div>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Scripts/theme.js"></script>
+</body>

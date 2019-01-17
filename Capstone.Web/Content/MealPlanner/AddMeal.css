@@ -1,0 +1,41 @@
+﻿body {
+    background-image: url(/Content/GettyImages-731851839-5b0476d704d1cf003aabbad6.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: black;
+}
+
+.add {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+
+.recipeField {
+    display: inline-block;
+}
+
+.recipeField2 {
+    display: inline-block;
+    text-align: right;
+}
+
+.box {
+    background-color: white;
+    text-align: left;
+    /*width: 50%;*/
+    min-width: 300px;
+    width: 80%;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 100px;
+    border-radius: 15px;
+    box-shadow: 5px 5px grey;
+    padding-top: 1.5%;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}

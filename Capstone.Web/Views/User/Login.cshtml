@@ -1,0 +1,50 @@
+﻿@{
+    <link href="~/Content/MealPlanner/Login.css" rel="stylesheet" type="text/css"/>
+}
+
+    <body>
+        <!-- START Site Preloader -->
+        <div id="theme-preloader-container">
+            <div class="theme-preloader">
+                <span class="circle-01"></span>
+                <span class="circle-02"></span>
+                <span class="circle-03"></span>
+            </div>
+        </div>
+        <!-- END Site Preloader -->
+        <h2 class="title loginTop">User Login</h2>
+
+        <div class="row loginHeader">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+
+                @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "loginForm" }))
+                {
+                    <div class="form-group">
+                        @Html.Label("Username")
+                        @Html.TextBox("Username", "", new { @class = "form-control", placeholder = "User Name" })
+                        @Html.ValidationMessage("Username", new { @class = "error" })
+                    </div>
+                    <div class="form-group">
+                        @Html.Label("Password")
+                        @Html.Password("Password", "", new { @class = "form-control", placeholder = "Password" })
+                        @Html.ValidationMessage("Password", new { @class = "error" })
+
+                    </div>
+                    <div class="registerAccount">
+                        @Html.ActionLink("Create new account", "Register")
+                    </div>
+                    <button type="submit" class="btn btn-default login">Login</button>
+                    <div>
+                        @Html.ValidationMessage("invalid-user", new { @class = "error" })
+                    </div>
+                }
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <!-- Theme Base, Components and Settings -->
+        <script src="~/Scripts/theme.js"></script>
+
+        <!-- Theme Custom -->
+        <script src="~/Scripts/custom.js"></script>
+    </body>

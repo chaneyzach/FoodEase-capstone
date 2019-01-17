@@ -1,0 +1,135 @@
+﻿@using Capstone.Web.Controllers
+@using Capstone.Web.Models
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Database
+
+@{
+    var user = (Session[UserController.UserKey]);
+    
+    
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>FoodEase</title>
+    <!-- Favicon -->
+    <link rel="icon" href="~/Content/MealPlanner/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/MealPlanner/favicon.png" type="image/x-icon">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <!-- Style Sheets  -->
+    <link rel="stylesheet" href="~/Content/MealPlanner/custom.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/MealPlanner/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- Scripts  -->
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/views/validation.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/theme.js"></script>
+
+
+</head>
+<div class="wrapper">
+    <header class="header">
+        <div class="container clearfix">
+            <button class="nav-toggle">
+                <i class="fa fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="logo">
+                <i class="fas fa-utensils fa-3x"></i>
+            </div>
+            <nav id="nav">
+                <button class="nav-close">×</button>
+                <ul class="nav-top">
+                    @*<li class="active">
+        <a href="/Home/Index">FoodEase</a>
+        </li>*@
+
+                    @*<li>
+          <a href="about-us.html">About Us</a>
+        </li>*@
+                    @if (Session[BaseController.UserKey] == null)
+                    {
+                        <li class="active">
+                            <a href="/Home/Index">Home</a>
+                        </li>
+                        <li>
+                            <a href="/User/Login">Login</a>
+                        </li>
+                        <li>
+                            <a href="/User/Register">Register</a>
+                        </li>
+                    }
+                    @if (Session[BaseController.UserKey] != null)
+                    {
+
+                        <li>
+                            @*<a href="/MealPlan/GetMealPlans">Plans</a>*@
+                            <div>
+                                <a class="btn btn-secondary" href="/MealPlan/GetMealPlans">
+                                    Meal Plans
+                                </a>
+
+                                @*<div class="dropdown-menu" aria-labelledby="mealPlans">
+                                    <a class="dropdown-item" href="/MealPlan/GetMealPlans">Show Meal Plans</a>
+                                    <a class="dropdown-item" href="/MealPlan/AddMealPlan">Add Meal Plan</a>
+                                </div>*@
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="/Meal/GetMeals">Meals</a>*@
+                            <div>
+                                <a class="btn btn-secondary" href="/Meal/GetMeals">
+                                    Meals
+                                </a>
+
+                                @*<div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Meal/GetMeals">Show Meals</a>
+                                    <a class="dropdown-item" href="/Meal/AddMeal">Add Meal</a>
+                                </div>*@
+                            </div>
+                        </li>
+                        <li>
+                            @*<a href="/Recipe/GetRecipes">Recipes</a>*@
+                            <div>
+                                <a class="btn btn-secondary" href="/Recipe/GetRecipes">
+                                    Recipes
+                                </a>
+
+                                @*<div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/Recipe/GetRecipes">Show Recipes</a>
+                                    <a class="dropdown-item" href="/Recipe/AddRecipe">Add Recipe</a>
+                                </div>*@
+                            </div>
+
+                        </li>
+
+                        <li>
+                            <a href="/Base/Logout">Logout - (@Session[BaseController.NameKey])</a>
+                        </li>
+                    }
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+</div>
+
+<section id="main-content">
+    @RenderBody()
+</section>
+</html>

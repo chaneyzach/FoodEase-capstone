@@ -1,0 +1,107 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/MealPlanDetail.css" rel="stylesheet" type="text/css" />
+}
+@using Capstone.Web.Models.ViewModels
+@using Capstone.Web.Models
+@model PlanDetailViewModel
+
+    <div class="container">
+
+        <div class="row-mealPlan">
+            <div class="col-lg-12 text-center" id="planName">
+                <h2>@Model.Plan.PlanName<hr /></h2>
+            </div>
+            <p>Edit Meals Here:</p>
+            @using (Html.BeginForm("AddPlan", "MealPlan", FormMethod.Post, new { id = "planForm" }))
+            {
+
+                for (int i = 0; i < Model.MealsOnDays[0].Count; i++)
+                {
+                    <div class="table">
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Monday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Tuesday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Wednesday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Thursday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Friday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Saturday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+                        @Html.TextBox("planId", "" + Model.Plan.PlanId + "", new { type = "hidden" })
+                        <div class="days2" style="display: inline-block">
+                            <p>Sunday</p>
+                            <select name="mealIds" class="drop">
+                                <option value="0">(none)</option>
+                                @foreach (var y in Model.AllMeals)
+                                {
+                                    <option value="@y.Id">@y.Name</option>
+                                }
+                            </select>
+                        </div>
+
+                    </div>
+                }
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-default add">Add Meals</button>
+                </div>
+            }
+        </div>
+    </div>

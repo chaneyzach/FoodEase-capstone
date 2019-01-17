@@ -1,0 +1,119 @@
+﻿@using Capstone.Web.Controllers
+@{
+
+    Layout = null;
+}
+
+<html lang="zxx">
+<head>
+
+    <!-- Basic -->
+    <meta charset="UTF-8">
+
+    <!-- Favicon -->
+    <link rel="icon" href="~/Content/MealPlanner/favicon.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/Content/MealPlanner/favicon.png" type="image/x-icon">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Web Fonts  -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="~/Content/MealPlanner/theme.css">
+
+    <!-- Theme Custom CSS -->
+    @*<link rel="stylesheet" href="~/Content/MealPlanner/custom.css">*@
+
+</head>
+
+<body class="home">
+    <!-- START Site Preloader -->
+    <div id="theme-preloader-container">
+        <div class="theme-preloader">
+            <span class="circle-01"></span>
+            <span class="circle-02"></span>
+            <span class="circle-03"></span>
+        </div>
+    </div>
+    <!-- END Site Preloader -->
+    <div class="wrapper">
+        <header class="header">
+            <div class="container clearfix">
+                @*<button class="nav-toggle">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </button>*@
+                <div class="logo">
+                    <i class="fas fa-utensils fa-3x"></i>@*LOGO*@ 
+                </div>
+            </div>
+            <div class="container main-index">
+                <div class="header-info" style="padding-top:1px">
+                    <h1 class="title stroke foodEase" style="font-size:50px">FoodEase</h1>
+                    <div class="subtitle">Add recipes, create meal plans, even create a grocery list</div>
+                    @*<div class="subtitle">Use Foodease to satisfy your meal planning needs</div>*@
+                    <div class="row loginHeader">
+                        <div class="col-sm-3"></div>
+                        <div class="col-sm-6">
+
+                            @using (Html.BeginForm("Login", "User", FormMethod.Post, new { id = "loginForm" }))
+                            {
+                                <div class="form-group">
+                                    <div class="labelText">@Html.Label("Username")</div>
+                                    @Html.TextBox("Username", "", new { @class = "form-control" })
+                                    @Html.ValidationMessage("Username", new { @class = "error" })
+                                </div>
+                                <div class="form-group">
+                                    <div class="labelText">@Html.Label("Password")</div>
+                                    @Html.Password("Password", "", new { @class = "form-control" })
+                                    @Html.ValidationMessage("Password", new { @class = "error" })
+
+                                </div>
+
+                                <button type="submit" class="btn btn-default login homeButton">Login</button>
+                                <div>
+                                    @Html.ValidationMessage("invalid-user", new { @class = "error" })
+                                </div>
+                            }
+                        </div>
+                        <div class="col-sm-3"></div>
+                    </div>
+                    <a class="homeButton" href="/User/Register">Register</a>
+                </div>
+            </div>
+        </header>
+        @*<footer class="footer">
+            <div class="container">
+                <nav>
+                    <ul class="nav-footer">
+                        <li class="active">
+                            <a href="/Home/Index">Home</a>
+                        </li>
+                        @if (Session[BaseController.UserKey] == null)
+                        {
+                            <li>
+                                <a href="/User/Login">Login</a>
+                            </li>
+                            <li>
+                                <a href="/User/Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+
+            </div>
+        </footer>*@
+    </div>
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="~/Scripts/theme.js"></script>
+</body>
+</html>
+

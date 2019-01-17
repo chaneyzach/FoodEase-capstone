@@ -1,0 +1,66 @@
+﻿body {
+    background-color: #F5F5F5;
+    color: black;
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url(/Content/GettyImages-731851839-5b0476d704d1cf003aabbad6.jpg);
+}
+
+.add {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px grey;
+    text-align: center;
+}
+
+.ingr {
+    display: inline-block;
+    padding-bottom: 15px;
+    vertical-align: top;
+}
+
+.ingrName {
+    margin:auto;
+}
+
+.redIngr{
+    color:red;
+    
+}
+
+.hidden {
+    display: none;
+}
+
+/*#ingredientForm{
+    display:inline;
+}*/
+
+.addIngr{
+    display:inline-block;
+}
+
+.row-pantry {
+    background-color: white;
+    text-align: left;
+    /*width: 50%;*/
+    min-width: 300px;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 5px black;
+    padding-top:1.5%;
+    padding-left:1%;
+}
+
+#ingredients {
+    vertical-align: top;
+}
+
+.btn{
+    margin-bottom:6px;
+}

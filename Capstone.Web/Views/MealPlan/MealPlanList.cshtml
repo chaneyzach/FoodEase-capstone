@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <link href="~/Content/MealPlanner/RecipeList.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/MealPlanner/custom.css" rel="stylesheet" type="text/css" />
+}
+
+@if (TempData["RecipeFail"] != null)
+{
+    string successMessage = TempData["RecipeFail"] as string;
+
+    <div class="alert alert-danger alert-dismissable in">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <strong>@successMessage</strong>
+    </div>
+}
+
+@using Capstone.Web.Models
+@model List<Plan>
+
+    <div class="container">
+        <div class="row-meal">
+            <h1 class="text-center">Meal Plans<hr /></h1>
+            <div class="row col-8" id="meals" style="display: inline-block">
+                @if (Model.Count != 0)
+                {
+                    for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div class="col-12 ingr" id="meals">
+                            <a class="link" href="~/MealPlan/GetMealPlan?planId=@Model[i].PlanId">
+                                <h2 class="">@Model[i].PlanName<hr /></h2>
+                            </a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>Your plan list is empty :(</p>
+                }
+            </div>
+
+            <div id="register" style="display: inline-block" class="col-sm-4">
+                <p>Create New Plan Here:</p>
+                @using (Html.BeginForm("AddPlan", "MealPlan", FormMethod.Get, new { id = "planForm" }))
+                {
+                    <div class="form-group">
+                        @Html.Label("Plan Name")
+                        @Html.TextBox("name", "", new { @class = "form-control", placeholder = "Plan Name" })
+                        @Html.ValidationMessage("Plan Name", new { @class = "error" })
+                    </div>
+                    <button type="submit" class="btn btn-default">Create</button>
+                }
+            </div>
+        </div>
+    </div>
